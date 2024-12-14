@@ -50,14 +50,14 @@ class DatabaseSeeder extends Seeder
             'Agriculture and Farming',
             'Construction and Skilled Trades'
         ];
-        
-        
-        
+
+
+
 
         foreach($categories as $category){
             Category::create(
                 [
-                'name'=> $category, 
+                'name'=> $category,
                 'slug'=> Str::slug($category),
                 'status'=> '1'
                 ]
@@ -68,18 +68,18 @@ class DatabaseSeeder extends Seeder
         $adminRole = Role::create(['name'=> 'admin']);
         $admin = User::create([
             'name'=> 'admin',
-            'email'=> 'nababurdev@gmail.com',
+            'email'=> 'admin@mathills.test',
             'user_type'=> 'admin',
             'status'=> '1',
-            'password'=> bcrypt('nababurdev123'),
+            'password'=> bcrypt('password'),
             'email_verified_at'=> NOW()
         ]);
 
         $admin->roles()->attach($adminRole);
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        \App\Models\User::factory()->create([
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+        ]);
     }
 }
